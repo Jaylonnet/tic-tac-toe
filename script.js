@@ -1,7 +1,17 @@
 const gameBoard = (function() {
     let board = ['-', '-', '-', '-', '-', '-', '-', '-', '-']
     const markupBoard = document.querySelector('#board')
-    return {board, markupBoard}
+    const displayBoard = () =>  {
+        markupBoard.style.display = 'grid';
+        for (const slot of board) {
+            const emptySlot = document.createElement('div')
+            emptySlot.style.border = '2px solid white'
+            emptySlot.style.cursor =  'pointer'
+            markupBoard.appendChild(emptySlot)
+        }
+    }
+
+    return {board, displayBoard}
 })();
 
 const Player = (name, choice) => {
@@ -19,7 +29,7 @@ const gameFlow = (function() {
         document.querySelector('#playerOne #name').textContent = playerOne.name
         document.querySelector('#playerTwo #name').textContent = playerTwo.name
         hidePreGame()
-        displayBoard()
+        gameBoard.displayBoard()
     };
     const hidePreGame = () => {
         const playerInput = document.querySelectorAll('#players input');
@@ -29,17 +39,6 @@ const gameFlow = (function() {
         const startGame = document.querySelector('#startGame');
         startGame.style.display = 'none';
     }
-
-    const displayBoard = () =>  {
-        gameBoard.markupBoard.style.display = 'grid';
-        for (const slot of gameBoard.board) {
-            const emptySlot = document.createElement('div')
-            emptySlot.style.border = '2px solid white'
-            emptySlot.style.cursor =  'pointer'
-            gameBoard.markupBoard.appendChild(emptySlot)
-        }
-    }
-
 
     return {
         initGame,
