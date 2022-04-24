@@ -12,7 +12,7 @@ body {
     background: #3498db;
     color: #ecf0f1;
     font-family: 'Roboto';
-    animation: fadeInAnimation ease 0.5s;
+    animation: fadeInAnimation ease 0.07s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
