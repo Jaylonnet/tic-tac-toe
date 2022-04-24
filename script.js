@@ -1,6 +1,7 @@
 const gameBoard = (function() {
-    board = ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E']
-    return {board}
+    let board = ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E']
+    const markupBoard = document.querySelector('#board')
+    return {board, markupBoard}
 })();
 
 const Player = (name, choice) => {
@@ -11,12 +12,11 @@ const Player = (name, choice) => {
 
 const gameFlow = (function() {
     const initGame = () => {
-        
+
+        for (const x of gameBoard.board) {
+        }
     };
     return {
         initGame,
     }
 })();
-
-gameFlow.initGame();
-
