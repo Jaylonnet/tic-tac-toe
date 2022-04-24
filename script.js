@@ -1,5 +1,5 @@
 const gameBoard = (function() {
-    let board = ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E']
+    let board = ['-', '-', '-', '-', '-', '-', '-', '-', '-']
     const markupBoard = document.querySelector('#board')
     return {board, markupBoard}
 })();
@@ -16,9 +16,11 @@ const gameFlow = (function() {
     const initGame = () => {
         playerOne.name = document.querySelector('#playerOne input').value
         playerTwo.name = document.querySelector('#playerTwo input').value
-        hidePreGameOps()
+        document.querySelector('#playerOne #name').textContent = playerOne.name
+        document.querySelector('#playerTwo #name').textContent = playerTwo.name
+        hidePreGame()
     };
-    const hidePreGameOps = () => {
+    const hidePreGame = () => {
         const playerInput = document.querySelectorAll('#players input');
         playerInput.forEach((input) => {
             input.style.display = 'none';
