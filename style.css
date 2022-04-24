@@ -12,6 +12,18 @@ body {
     background: #3498db;
     color: #ecf0f1;
     font-family: 'Roboto';
+    animation: fadeInAnimation ease 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 h1 {
@@ -41,4 +53,9 @@ h1 {
     text-transform: uppercase;
     font-weight: 700;
     font-size: 1.2rem;
+    transition: background 0.15s;
+}
+
+#startGame:hover {
+    background: #3baaf5;
 }

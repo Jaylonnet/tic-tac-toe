@@ -12,9 +12,6 @@ const Player = (name, choice) => {
 
 const gameFlow = (function() {
     const initGame = () => {
-
-        for (const x of gameBoard.board) {
-        }
     };
     return {
         initGame,
