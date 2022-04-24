@@ -71,3 +71,11 @@ h1 {
     display: flex;
     justify-content: center;
 }
+
+#board div {
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid white;
+}

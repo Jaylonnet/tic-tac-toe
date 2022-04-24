@@ -5,8 +5,7 @@ const gameBoard = (function() {
         markupBoard.style.display = 'grid';
         for (const slot of board) {
             const emptySlot = document.createElement('div')
-            emptySlot.style.border = '2px solid white'
-            emptySlot.style.cursor =  'pointer'
+            emptySlot.textContent = slot
             markupBoard.appendChild(emptySlot)
         }
     }
@@ -26,8 +25,8 @@ const gameFlow = (function() {
     const initGame = () => {
         playerOne.name = document.querySelector('#playerOne input').value
         playerTwo.name = document.querySelector('#playerTwo input').value
-        document.querySelector('#playerOne #name').textContent = playerOne.name
-        document.querySelector('#playerTwo #name').textContent = playerTwo.name
+        document.querySelector('#playerOne h2').textContent = playerOne.name
+        document.querySelector('#playerTwo h2').textContent = playerTwo.name
         hidePreGame()
         gameBoard.displayBoard()
     };
