@@ -31,6 +31,12 @@ h1 {
     font-weight: 500;
 }
 
+#playerOne, #playerTwo  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 #players {
     display: flex;
     justify-content: center;
