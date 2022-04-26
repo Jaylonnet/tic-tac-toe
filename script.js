@@ -9,14 +9,24 @@ const displayController = (function () {
     })();
 
     const _initStartGame = () => {
-        _removeInputs();
+        const playerOneName = document.querySelector('#playerOne input').value;
+        const playerTwoName = document.querySelector('#playerTwo input').value;
+        _removePreGameElements();
+        _updateNameTags(playerOneName, playerTwoName);
+        gameController.initGame(playerOneName, playerTwoName);
+
     };
 
-    const _removeInputs = () => {
+    const _removePreGameElements = () => {
         document.querySelectorAll('#players input').forEach((input) => {
             input.style.display = 'none';
         });
-        
+        document.querySelector('#startGame').style.display = 'none';
+    };
+
+    const _updateNameTags = (playerOneName, playerTwoName) => {
+        document.querySelector('#playerOne h2').textContent = playerOneName;
+        document.querySelector('#playerTwo h2').textContent = playerTwoName;
     };
 
 })();
@@ -37,5 +47,11 @@ const gameController = (function () {
         playerTwo = player(playerTwoName, 'O');
     };
 
+    const initGame = (playerOneName, playerTwoName) => {
+        _createPlayers(playerOneName, playerTwoName);
+    };
 
+    return {
+        initGame,
+    }
 })();
