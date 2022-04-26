@@ -1,5 +1,10 @@
 const gameBoard = (function (board) {
-      
+
+    const boardArray = ['X', 'O', 'X', 'X', 'O', 'X', 'X', 'O', 'X']
+    return {
+        board,
+        boardArray,
+    }
 })(document.querySelector('#board'));
 
 const displayController = (function () {
@@ -13,6 +18,8 @@ const displayController = (function () {
         const playerTwoName = document.querySelector('#playerTwo input').value;
         _removePreGameElements();
         _updateNameTags(playerOneName, playerTwoName);
+        _showBoard(gameBoard.board);
+        _addBoardSlots(gameBoard.boardArray, gameBoard.board);
         gameController.initGame(playerOneName, playerTwoName);
 
     };
@@ -27,6 +34,20 @@ const displayController = (function () {
     const _updateNameTags = (playerOneName, playerTwoName) => {
         document.querySelector('#playerOne h2').textContent = playerOneName;
         document.querySelector('#playerTwo h2').textContent = playerTwoName;
+    };
+
+    const _showBoard = (board) => {
+        board.style.display = 'grid';
+    };
+
+    const _addBoardSlots = (boardArray, boardElement) => {
+        let count = 0;
+        for (let slot of boardArray) {
+            const slot = document.createElement('div');
+            slot.setAttribute('data-index', count);
+            boardElement.appendChild(slot)
+            count++
+        };
     };
 
 })();
