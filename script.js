@@ -62,10 +62,20 @@ const gameController = (function () {
     
     let playerOne = null;
     let playerTwo = null;
+    let currentPlayer = null;
     
     const _createPlayers = (playerOneName, playerTwoName) => {
         playerOne = player(playerOneName, 'X');
         playerTwo = player(playerTwoName, 'O');
+        _setPlayer();
+    };
+
+    const _setPlayer = () => {
+        if (currentPlayer != playerOne) {
+            currentPlayer = playerOne;
+        } else {
+            currentPlayer = playerTwo;
+        };
     };
 
     const initGame = (playerOneName, playerTwoName) => {
