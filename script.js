@@ -21,6 +21,7 @@ const displayController = (function () {
         _showBoard(gameBoard.board);
         _addBoardSlots(gameBoard.boardArray, gameBoard.board);
         gameController.initGame(playerOneName, playerTwoName);
+        _addEventListeners(document.querySelectorAll('#board div'));
 
     };
 
@@ -50,13 +51,26 @@ const displayController = (function () {
         };
     };
 
+    const _addEventListeners = (nodeList) => {
+        nodeList.forEach((slot) => {
+            slot.addEventListener('click', (e) => {
+                gameController.getCurrentPlayer().makeSelection(e);
+            })
+        });
+    };
+
 })();
 
 const player = (name, choice) => {
     const getName = () => name;
     const getChoice = () => choice;
-    return {getName, getChoice}
-}
+
+    const makeSelection = (e) => {
+        e.target.textContent = getChoice()
+        gameController.setPlayer()
+    };
+    return { getName, getChoice, makeSelection };
+  };
 
 const gameController = (function () {
     
@@ -67,10 +81,10 @@ const gameController = (function () {
     const _createPlayers = (playerOneName, playerTwoName) => {
         playerOne = player(playerOneName, 'X');
         playerTwo = player(playerTwoName, 'O');
-        _setPlayer();
+        setPlayer();
     };
 
-    const _setPlayer = () => {
+    const setPlayer = () => {
         if (currentPlayer != playerOne) {
             currentPlayer = playerOne;
         } else {
@@ -78,11 +92,15 @@ const gameController = (function () {
         };
     };
 
+    const getCurrentPlayer = () => currentPlayer;
+
     const initGame = (playerOneName, playerTwoName) => {
         _createPlayers(playerOneName, playerTwoName);
     };
 
     return {
         initGame,
+        getCurrentPlayer,
+        setPlayer,
     }
 })();
